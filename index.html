@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Site | Professional Websites for Small Businesses</title>
+  <meta name="description" content="Your Site builds powerful, modern websites for small businesses at the right price." />
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #101c30;
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.09);
+      --line: rgba(255,255,255,0.12);
+      --text: #f4f7fb;
+      --muted: #b8c3d6;
+      --accent: #6ea8fe;
+      --accent-2: #8ef0d3;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.28);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110,168,254,0.18), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(142,240,211,0.12), transparent 25%),
+        linear-gradient(180deg, #07101c 0%, #0b1628 45%, #09111f 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(110,168,254,0.75);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin: 1rem 0 1.25rem;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(7,16,28,0.62);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 1.08rem;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(110,168,254,0.3), rgba(142,240,211,0.25));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .nav-links a:hover,
+    .footer-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      padding: 0.8rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(135deg, rgba(110,168,254,0.18), rgba(142,240,211,0.15));
+      color: var(--white);
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 84px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.9rem 0 1.4rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #5f8cff);
+      color: #08111f;
+      box-shadow: 0 16px 34px rgba(110,168,254,0.28);
+    }
+
+    .button-secondary {
+      border-color: var(--line);
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-points {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      inset: auto auto 20px 20px;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(110,168,254,0.4), transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .mockup {
+      position: relative;
+      border-radius: 22px;
+      background: #f8fbff;
+      color: #0c1b30;
+      overflow: hidden;
+      min-height: 500px;
+      box-shadow: 0 22px 50px rgba(5,12,22,0.3);
+    }
+
+    .mockup-top {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.8rem 1rem;
+      background: #eaf0f8;
+      border-bottom: 1px solid rgba(12,27,48,0.08);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: #bed0eb; }
+    .mockup-body { padding: 1rem; display: grid; gap: 1rem; }
+    .bar {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #dce6f3, #eef4fb);
+    }
+    .bar.sm { width: 30%; }
+    .bar.md { width: 55%; }
+    .bar.lg { width: 82%; height: 28px; }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .mini-card {
+      background: #f5f9ff;
+      border: 1px solid rgba(12,27,48,0.08);
+      border-radius: 18px;
+      padding: 1rem;
+      min-height: 132px;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #eef4fb, #f9fbfe);
+      border: 1px solid rgba(12,27,48,0.08);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 1.35rem;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(142,240,211,0.28);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, rgba(110,168,254,0.18), rgba(142,240,211,0.16));
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 1.2rem;
+    }
+
+    .mission {
+      padding: 1.4rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(142,240,211,0.24);
+      background: linear-gradient(135deg, rgba(110,168,254,0.12), rgba(142,240,211,0.08));
+      color: var(--white);
+      margin-top: 1.4rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .price-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.featured::after {
+      content: "Most Popular";
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.75rem;
+      color: #08111f;
+      background: var(--accent-2);
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin: 1rem 0 0.25rem;
+    }
+
+    .price-sub {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 0.8rem;
+      padding: 0;
+      margin: 1.25rem 0 1.5rem;
+      list-style: none;
+    }
+
+    .list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: start;
+      color: var(--muted);
+    }
+
+    .check {
+      margin-top: 0.2rem;
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(110,168,254,0.26);
+    }
+
+    .demo-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .demo-shot {
+      height: 220px;
+      background: linear-gradient(135deg, rgba(110,168,254,0.22), rgba(142,240,211,0.16));
+      border-bottom: 1px solid var(--line);
+      padding: 1rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .demo-window {
+      width: 100%;
+      max-width: 320px;
+      background: #f9fbfe;
+      color: #10223a;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+    }
+
+    .demo-window .header {
+      background: #eaf1f8;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .demo-window .body { padding: 0.9rem; display: grid; gap: 0.7rem; }
+
+    .demo-window .thumb {
+      height: 80px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #d9e6f5, #edf4fb);
+    }
+
+    .demo-content {
+      padding: 1.35rem;
+    }
+
+    .demo-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(110,168,254,0.18), rgba(142,240,211,0.15));
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .contact-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .contact-item {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-item strong { display: block; margin-bottom: 0.3rem; }
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      color: var(--white);
+      padding: 0.95rem 1rem;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(110,168,254,0.52);
+      background: rgba(255,255,255,0.06);
+    }
+
+    textarea { min-height: 140px; resize: vertical; }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .contact-wrap,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mockup { min-height: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 68px 0; }
+      .hero { padding: 62px 0 34px; }
+      .hero-actions,
+      .demo-actions,
+      .footer-inner,
+      .stat-row,
+      .mock-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-row {
+        display: grid;
+      }
+
+      .button,
+      .nav-cta {
+        width: 100%;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 0.9rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top" aria-label="Your Site home">
+          <span class="brand-mark">YS</span>
+          <span>Your Site</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#examples">Examples</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="nav-cta" href="#contact">Start a Website</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Built for small businesses</span>
+          <h1>Professional websites that make your business look legit.</h1>
+          <p>
+            Your Site builds fast, modern websites for local businesses that want a stronger online presence,
+            more customer trust, and a clean professional brand without expensive agency pricing.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#examples">View Example Sites</a>
+            <a class="button button-secondary" href="#pricing">See Pricing</a>
+          </div>
+          <div class="hero-points">
+            <span class="chip">Berea • Richmond • Lexington • Houston</span>
+            <span class="chip">Fast launch process</span>
+            <span class="chip">Ongoing monthly support</span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="glow"></div>
+          <div class="mockup" aria-hidden="true">
+            <div class="mockup-top">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="mockup-body">
+              <div class="bar sm"></div>
+              <div class="bar lg"></div>
+              <div class="bar md"></div>
+              <div class="stat-row">
+                <div class="stat"><div class="bar sm"></div><div class="bar md" style="margin-top:0.8rem;"></div></div>
+                <div class="stat"><div class="bar sm"></div><div class="bar md" style="margin-top:0.8rem;"></div></div>
+                <div class="stat"><div class="bar sm"></div><div class="bar md" style="margin-top:0.8rem;"></div></div>
+              </div>
+              <div class="mock-grid">
+                <div class="mini-card"><div class="bar md"></div><div class="bar sm" style="margin-top:0.9rem;"></div><div class="bar md" style="margin-top:0.9rem;"></div></div>
+                <div class="mini-card"><div class="bar md"></div><div class="bar sm" style="margin-top:0.9rem;"></div><div class="bar md" style="margin-top:0.9rem;"></div></div>
+              </div>
+              <div class="mini-card"><div class="bar md"></div><div class="bar lg" style="margin-top:0.9rem;"></div><div class="bar md" style="margin-top:0.9rem;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">About Your Site</span>
+            <h2>Clean websites. Clear pricing. Real support.</h2>
+          </div>
+          <p class="lead">
+            Your Site was created to help small businesses establish a professional online presence without the high costs,
+            delays, and confusion that usually come with custom web work.
+          </p>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>What we do</h3>
+            <p class="muted">
+              We design and launch modern business websites that are mobile-friendly, easy to navigate, and built to help customers
+              take action — whether that means calling, booking, or sending a message.
+            </p>
+            <p class="muted">
+              The goal is simple: make your business look more established online and give customers a place they can trust.
+            </p>
+          </div>
+          <div class="card reveal">
+            <h3>Who it’s for</h3>
+            <p class="muted">
+              Your Site works best for local businesses like barbershops, auto shops, landscapers, detailers, salons, contractors,
+              and service-based brands that need a strong digital presence without agency pricing.
+            </p>
+            <div class="mission">
+              Our mission is simple: build powerful websites for the right price so small businesses can grow online with confidence.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Our Services</span>
+            <h2>Everything needed to get a business online.</h2>
+          </div>
+          <p class="lead">
+            From launch to maintenance, Your Site keeps things simple so business owners can stay focused on running their business.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="icon">↗</div>
+            <h3>Website Launch</h3>
+            <p class="muted">Custom business website built and deployed with a clean layout, strong branding, and a professional first impression.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">⚙</div>
+            <h3>Website Management</h3>
+            <p class="muted">Ongoing updates, maintenance, and monitoring so the website stays secure, updated, and running smoothly month after month.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">◎</div>
+            <h3>Online Presence Setup</h3>
+            <p class="muted">A professional online home that helps customers find the business, understand the service, and take action quickly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Simple Pricing</span>
+            <h2>Straightforward pricing that makes sense.</h2>
+          </div>
+          <p class="lead">No bloated agency retainers. Just a launch fee and a monthly plan to keep the site running and maintained.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card price-card reveal">
+            <h3>Website Launch</h3>
+            <div class="price">$500</div>
+            <div class="price-sub">One-time setup and deployment</div>
+            <ul class="list">
+              <li><span class="check"></span><span>Custom small-business website</span></li>
+              <li><span class="check"></span><span>Responsive design for mobile and desktop</span></li>
+              <li><span class="check"></span><span>Contact section or lead form setup</span></li>
+              <li><span class="check"></span><span>Basic SEO-ready structure</span></li>
+              <li><span class="check"></span><span>Deployment and launch support</span></li>
+            </ul>
+            <a class="button button-secondary" href="#contact">Ask About Launch</a>
+          </article>
+
+          <article class="card price-card featured reveal">
+            <h3>Website Management</h3>
+            <div class="price">$200<span style="font-size:1rem;font-weight:700;letter-spacing:0;"> / month</span></div>
+            <div class="price-sub">Ongoing support and maintenance</div>
+            <ul class="list">
+              <li><span class="check"></span><span>Hosting and uptime monitoring</span></li>
+              <li><span class="check"></span><span>Security and routine maintenance</span></li>
+              <li><span class="check"></span><span>Small content edits and updates</span></li>
+              <li><span class="check"></span><span>Continued technical support</span></li>
+              <li><span class="check"></span><span>Peace of mind so the owner never has to touch the site</span></li>
+            </ul>
+            <a class="button button-primary" href="#contact">Start Monthly Support</a>
+          </article>
+        </div>
+        <p class="muted reveal" style="margin-top:1rem;">Most businesses choose both options to launch and maintain their site.</p>
+      </div>
+    </section>
+
+    <section class="section" id="examples">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Example Websites</span>
+            <h2>Demo sites built for real local business niches.</h2>
+          </div>
+          <p class="lead">These example layouts make it easy to show potential clients what their website could look like before anything is built for them.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card demo-card reveal">
+            <div class="demo-shot">
+              <div class="demo-window">
+                <div class="header"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                <div class="body">
+                  <div class="thumb"></div>
+                  <div class="bar md"></div>
+                  <div class="bar sm"></div>
+                  <div class="bar md"></div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-content">
+              <h3>Barber Shop Website</h3>
+              <p class="muted">A sharp, modern layout for barbershops or salons with services, gallery, booking call-to-action, and contact details.</p>
+              <div class="demo-actions">
+                <a class="button button-secondary" href="#contact">View Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo-card reveal">
+            <div class="demo-shot">
+              <div class="demo-window">
+                <div class="header"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                <div class="body">
+                  <div class="thumb"></div>
+                  <div class="bar md"></div>
+                  <div class="bar sm"></div>
+                  <div class="bar md"></div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-content">
+              <h3>Auto Repair Website</h3>
+              <p class="muted">A service-first layout for mechanics or auto shops with repair categories, trust-building sections, and quote requests.</p>
+              <div class="demo-actions">
+                <a class="button button-secondary" href="#contact">View Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo-card reveal">
+            <div class="demo-shot">
+              <div class="demo-window">
+                <div class="header"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                <div class="body">
+                  <div class="thumb"></div>
+                  <div class="bar md"></div>
+                  <div class="bar sm"></div>
+                  <div class="bar md"></div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-content">
+              <h3>Landscaping Website</h3>
+              <p class="muted">A clean layout for landscapers and contractors featuring services, before-and-after style sections, and lead capture.</p>
+              <div class="demo-actions">
+                <a class="button button-secondary" href="#contact">View Demo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">How It Works</span>
+            <h2>A simple process from first conversation to launch.</h2>
+          </div>
+          <p class="lead">Your Site keeps the workflow straightforward so businesses know exactly what to expect.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal step">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Consultation</h3>
+              <p class="muted">We learn about the business, services, style, and what the website needs to accomplish.</p>
+            </div>
+          </div>
+          <div class="card reveal step">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Website Build</h3>
+              <p class="muted">The site is designed and developed with a clean look, clear messaging, and mobile responsiveness.</p>
+            </div>
+          </div>
+          <div class="card reveal step">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Launch</h3>
+              <p class="muted">The website goes live so customers can start finding and learning about the business online.</p>
+            </div>
+          </div>
+          <div class="card reveal step">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Ongoing Support</h3>
+              <p class="muted">Monthly management keeps the site updated, secure, and supported without the owner having to worry about it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-wrap">
+        <div class="contact-panel reveal">
+          <span class="eyebrow">Start Your Website</span>
+          <h2>Ready to get your business online?</h2>
+          <p class="lead">
+            Your Site helps small businesses launch professional websites that look credible, load cleanly, and support growth.
+          </p>
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>Serving</strong>
+              <span class="muted">Anyone!</span>
+            </div>
+            <div class="contact-item">
+              <strong>Email</strong>
+              <span class="muted">victor0129hernandez@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <strong>Availability</strong>
+              <span class="muted">Now accepting new small-business website projects.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-panel reveal">
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>Email</strong>
+              <span class="muted">victor0129hernandez@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <strong>Phone</strong>
+              <span class="muted">(832) 284 2309</span>
+            </div>
+            <div class="contact-item">
+              <strong>Get Started</strong>
+              <span class="muted">If you want a professional website for your business, send an email or give a quick call and we can talk about getting your site launched.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong style="display:block;color:var(--white);margin-bottom:0.35rem;">Your Site</strong>
+        <span>Professional websites for small businesses.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>© <span id="year"></span> Your Site</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
